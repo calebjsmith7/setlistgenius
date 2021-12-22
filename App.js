@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Dimensions
 } from 'react-native';
+import KeepAwake from 'react-native-keep-awake';
 
 import logo from './images/setlistgenius.png';
 import Song from './components/song.js';
@@ -26,7 +27,7 @@ import Gshpad from './audio/GshPad1.wav';
 import Nome from './audio/nome.wav';
 import pause from './images/pausesymbol.png';
 import _BackgroundTimer from 'react-native-background-timer';
-
+import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
 
@@ -49,6 +50,11 @@ const App = () => {
   let current = undefined;
   let clickon = false;
   let speeds = null;
+
+
+  React.useEffect(() => {
+    SplashScreen.hide();
+  });
 
 
   test = (song, speed) => {
@@ -190,6 +196,7 @@ const App = () => {
   return (
 
     <SafeAreaView style={{ backgroundColor: '#16425b', height: Dimensions.get('window').height }}>
+      <KeepAwake/>
       <View style={styles.container}>
         <Image source={logo} style={styles.header} />
       </View>
@@ -214,6 +221,7 @@ const App = () => {
         <Image source={pause} style={styles.pause}/>
       </TouchableOpacity>
     </SafeAreaView>
+    
 
   );
 };
